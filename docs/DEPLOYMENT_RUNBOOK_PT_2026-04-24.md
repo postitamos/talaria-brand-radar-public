@@ -23,7 +23,9 @@ Ja existe neste repo:
 - migration da tabela `newsletter_signups`
 - funcao Edge `newsletter-signup`
 - `supabase/config.toml` com `verify_jwt = false` para a funcao publica
-- `vercel.json` com rewrites SPA e headers basicos
+- workflow de GitHub Pages em `.github/workflows/deploy-pages.yml`
+- fallback SPA para GitHub Pages em `public/404.html` e `index.html`
+- `vercel.json` como fallback de host estatico
 
 Estado validado em 2026-04-24:
 
@@ -101,6 +103,8 @@ Criar `.env.local` a partir de `.env.example` com:
 - `VITE_PUBLIC_SIGNUP_SUPABASE_URL`
 - `VITE_PUBLIC_SIGNUP_SUPABASE_ANON_KEY`
 - opcional `VITE_PUBLIC_SIGNUP_FUNCTION_NAME`
+- opcional `VITE_PUBLIC_BASE_PATH`
+- opcional `VITE_PUBLIC_SUPPORT_EMAIL`
 
 Valor default da funcao:
 
@@ -136,18 +140,26 @@ Confirmar:
 
 Hosting default recomendado:
 
-- Vercel
+- GitHub Pages
 
-Configurar no host:
+Setup esperado:
 
-- root do repo `talaria-brand-radar-public`
-- build command: `npm run build`
-- output directory: `dist`
-- variaveis de ambiente publicas do projeto escolhido
+- repo publico `talaria-brand-radar-public`
+- workflow `.github/workflows/deploy-pages.yml`
+- GitHub Pages configurado para usar GitHub Actions
+- secrets do repo:
+  - `VITE_PUBLIC_SIGNUP_SUPABASE_URL`
+  - `VITE_PUBLIC_SIGNUP_SUPABASE_ANON_KEY`
+  - opcional `VITE_PUBLIC_SIGNUP_FUNCTION_NAME`
+  - opcional `VITE_PUBLIC_SUPPORT_EMAIL`
 
-Bloqueio restante:
+Build base:
 
-- falta apenas acesso/credenciais ao host estatico para completar o deploy real
+- `VITE_PUBLIC_BASE_PATH=/${repo_name}/`
+
+Fallback host:
+
+- Vercel continua aceitavel se GitHub Pages nao puder ser usado
 
 ## Passo 9: Smoke test apos deploy
 
@@ -159,6 +171,7 @@ Confirmar em producao:
 - filtros de pais, cidade e relacao com Portugal funcionam
 - detalhe inline abre
 - `/metodologia` bate certo com o contrato PT
+- `/privacidade` mostra o boundary publico/privado e, idealmente, um contacto de suporte
 - `/registo` aceita submissao valida
 - submissao repetida devolve sucesso generico
 - `/arquivo` mostra placeholder

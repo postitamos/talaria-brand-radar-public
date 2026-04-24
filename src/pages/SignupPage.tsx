@@ -12,6 +12,7 @@ const emptyForm: SignupPayload = {
 };
 
 export function SignupPage() {
+  const supportEmail = import.meta.env.VITE_PUBLIC_SUPPORT_EMAIL?.trim();
   const [form, setForm] = useState<SignupPayload>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof SignupPayload, string>>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -163,7 +164,13 @@ export function SignupPage() {
             <li>Sem automacao de envio nesta fase.</li>
             <li>Signup isolado por funcao publica e sem leitura runtime das tabelas de research.</li>
             <li>Override editorial de linhas limited fica fora do form e fora do site.</li>
+            <li>Os dados de registo ficam privados e nao entram no ranking publico.</li>
           </ul>
+          <p className="inline-note">
+            {supportEmail
+              ? `Contacto para suporte ao registo: ${supportEmail}.`
+              : 'Contacto de suporte ainda por configurar antes do lancamento publico.'}
+          </p>
         </aside>
       </section>
     </div>

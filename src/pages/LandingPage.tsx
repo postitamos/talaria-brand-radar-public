@@ -67,6 +67,13 @@ export function LandingPage() {
             distribuicao recorrente, sempre com metodologia publica e explicita.
           </p>
         </article>
+        <article className="content-card">
+          <h3>Onde esta o limite publico</h3>
+          <p>
+            O site mostra output derivado ao nivel de marca. A evidencia bruta, notas internas
+            e dados pessoais ficam fora da superficie publica.
+          </p>
+        </article>
       </section>
 
       <section className="content-band">

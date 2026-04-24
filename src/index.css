@@ -172,6 +172,32 @@ a {
   color: var(--muted);
 }
 
+.footer-block {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.footer-block--links {
+  justify-items: start;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  color: var(--muted);
+  transition: 180ms ease;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible,
+.footer-link--active {
+  color: var(--accent-strong);
+}
+
 .page-stack {
   display: grid;
   gap: 1.5rem;
@@ -230,6 +256,11 @@ a {
 
 .hero-lead {
   max-width: 62ch;
+}
+
+.hero-note {
+  max-width: 64ch;
+  color: var(--muted);
 }
 
 .hero-actions {

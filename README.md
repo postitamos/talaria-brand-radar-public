@@ -6,6 +6,7 @@ This repo is the dedicated public product surface for:
 
 - public rankings
 - public methodology
+- privacy and publication-boundary page
 - free newsletter signup
 - newsletter archive placeholder
 
@@ -77,6 +78,8 @@ Copy `.env.example` to `.env.local` and set:
 - `VITE_PUBLIC_SIGNUP_SUPABASE_URL`
 - `VITE_PUBLIC_SIGNUP_SUPABASE_ANON_KEY`
 - optional `VITE_PUBLIC_SIGNUP_FUNCTION_NAME`
+- optional `VITE_PUBLIC_BASE_PATH`
+- optional `VITE_PUBLIC_SUPPORT_EMAIL`
 
 The public site uses only the signup project URL + anon/publishable key for the
 public Edge Function. It does not read Brand Radar research tables at runtime.
@@ -127,16 +130,23 @@ Current boundary:
 - `/` - landing page
 - `/ranking` - public rankings
 - `/metodologia` - methodology
+- `/privacidade` - privacy and publication boundary
 - `/registo` - newsletter signup
 - `/arquivo` - newsletter archive placeholder
 
 ## Deployment Readiness
 
-- `vercel.json` is included for SPA rewrites and basic public headers
+- `.github/workflows/deploy-pages.yml` is included for GitHub Pages deployment
+- `public/404.html` plus the SPA redirect logic in `index.html` keep clean routes
+  working on GitHub Pages
+- `VITE_PUBLIC_BASE_PATH` supports project-site base-path builds
+- `VITE_PUBLIC_SUPPORT_EMAIL` lets the public surface expose a real support and
+  privacy contact instead of hiding that boundary
+- `vercel.json` remains available as a fallback static host config
 - `docs/DEPLOYMENT_RUNBOOK_PT_2026-04-24.md` documents the shared-project
   fallback and the static deployment flow
-- the only remaining launch blocker is static hosting access for the real public
-  deploy and smoke test
+- the preferred v1 host is now GitHub Pages, provided the repo is created and
+  Pages can publish the workflow artifact
 
 ## Current Data Rules
 

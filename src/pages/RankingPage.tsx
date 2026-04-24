@@ -52,6 +52,10 @@ export function RankingPage() {
             O ranking consome apenas o artefacto publico snapshot-backed. Linhas blocked ficam
             fora do site; linhas limited entram com contexto e badge visivel.
           </p>
+          <p className="hero-note">
+            A superficie publica e company-level: o site nao mostra evidencia bruta, notas de QA
+            internas ou dados de contacto pessoais.
+          </p>
         </div>
       </section>
 

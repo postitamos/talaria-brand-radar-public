@@ -3,6 +3,7 @@ import { SiteShell } from './components/SiteShell';
 import { ArchivePage } from './pages/ArchivePage';
 import { LandingPage } from './pages/LandingPage';
 import { MethodologyPage } from './pages/MethodologyPage';
+import { PrivacyPage } from './pages/PrivacyPage';
 import { RankingPage } from './pages/RankingPage';
 import { SignupPage } from './pages/SignupPage';
 
@@ -13,6 +14,7 @@ function App() {
         <Route element={<LandingPage />} index />
         <Route element={<RankingPage />} path="ranking" />
         <Route element={<MethodologyPage />} path="metodologia" />
+        <Route element={<PrivacyPage />} path="privacidade" />
         <Route element={<SignupPage />} path="registo" />
         <Route element={<ArchivePage />} path="arquivo" />
       </Route>
