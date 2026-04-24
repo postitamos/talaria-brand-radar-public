@@ -13,9 +13,20 @@ describe('smoke test live site script', () => {
   });
 
   it('parses the default smoke-test arguments', () => {
-    const args = parseArgs([]);
-    expect(args.baseUrl).toContain('github.io/talaria-brand-radar-public');
-    expect(args.checkSignup).toBe(false);
-    expect(args.signupFunctionName).toBe('newsletter-signup');
+    const previousValue = process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME;
+    delete process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME;
+
+    try {
+      const args = parseArgs([]);
+      expect(args.baseUrl).toContain('github.io/talaria-brand-radar-public');
+      expect(args.checkSignup).toBe(false);
+      expect(args.signupFunctionName).toBe('newsletter-signup');
+    } finally {
+      if (previousValue === undefined) {
+        delete process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME;
+      } else {
+        process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME = previousValue;
+      }
+    }
   });
 });

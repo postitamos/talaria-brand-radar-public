@@ -16,7 +16,8 @@ export function parseArgs(argv) {
     checkSignup: argv.includes('--check-signup'),
     signupUrl:
       signupUrlIndex >= 0 ? argv[signupUrlIndex + 1] : process.env.VITE_PUBLIC_SIGNUP_SUPABASE_URL,
-    signupFunctionName: process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME || 'newsletter-signup',
+    signupFunctionName:
+      process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME?.trim() || 'newsletter-signup',
     signupEmail:
       signupEmailIndex >= 0
         ? argv[signupEmailIndex + 1]
