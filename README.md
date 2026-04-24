@@ -31,6 +31,9 @@ live Brand Radar truth tables at runtime.
 - `npm run verify:artifact` - validate the imported public rankings artifact boundary
 - `npm run import:newsletter` - import the newsletter candidate artifact into `public/data/`
 - `npm run verify:newsletter` - validate the imported newsletter candidate artifact boundary
+- `npm run build:release` - build the technical site release manifest into `public/data/`
+- `npm run verify:release` - validate the site release manifest against imported artifacts
+- `npm run smoke:live` - check the live public site routes and published JSON artifacts
 - `npm run verify` - tests plus build
 - `npm run import:rankings` - import the approved public rankings artifact into `public/data/`
 
@@ -69,6 +72,13 @@ The same repo also supports the manual editorial candidate import:
 ```powershell
 npm run import:newsletter
 npm run verify:newsletter
+```
+
+To formalize the system-side release state:
+
+```powershell
+npm run build:release
+npm run verify:release
 ```
 
 ## Signup Environment
@@ -125,6 +135,10 @@ Current boundary:
 - newsletter candidates remain `publishable` by default unless an explicit
   upstream `limited` override is present in the imported artifact
 
+The active next lane is systems-only: the imported newsletter artifact is kept
+as supporting release input, but the repo is not opening a newsletter-content
+tranche by default.
+
 ## Current Public Routes
 
 - `/` - landing page
@@ -145,6 +159,8 @@ Current boundary:
 - `vercel.json` remains available as a fallback static host config
 - `docs/DEPLOYMENT_RUNBOOK_PT_2026-04-24.md` documents the shared-project
   fallback and the static deployment flow
+- `docs/RELEASE_SYSTEM_RUNBOOK_PT_2026-04-24.md` documents the manual
+  import -> manifest -> verify -> deploy -> smoke-test loop
 - the preferred v1 host is now GitHub Pages on the GitHub Free path
 - current staging state may remain private temporarily, but the launch path now
   assumes this repo will be made public before GitHub Pages is enabled

@@ -6,15 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:release": "node ./scripts/build-site-release-manifest.mjs",
     "import:rankings": "node ./scripts/import-rankings-artifact.mjs",
     "import:newsletter": "node ./scripts/import-newsletter-candidates-artifact.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
+    "smoke:live": "node ./scripts/smoke-test-live-site.mjs",
     "test": "vitest",
     "test:run": "vitest run",
     "verify:artifact": "node ./scripts/verify-public-rankings-artifact.mjs",
     "verify:newsletter": "node ./scripts/verify-newsletter-candidates-artifact.mjs",
-    "verify": "npm run test:run && npm run verify:artifact && npm run verify:newsletter && npm run build"
+    "verify:release": "node ./scripts/verify-site-release-manifest.mjs",
+    "verify": "npm run test:run && npm run verify:artifact && npm run verify:newsletter && npm run verify:release && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",

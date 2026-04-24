@@ -1,0 +1,97 @@
+{
+  "artifact_kind": "site_release",
+  "artifact_version": "site-release-v1",
+  "generated_at": "2026-04-24T20:05:45.875Z",
+  "snapshot_captured_at": "2026-04-23T22:09:57Z",
+  "score_version": "public-brand-score-v1",
+  "site_contract": {
+    "language_default": "pt-PT",
+    "hosting_mode": "github-pages-free",
+    "data_mode": "snapshot_backed_read_only",
+    "signup_boundary_mode": "shared_project_fallback",
+    "routes": [
+      "/",
+      "/ranking",
+      "/metodologia",
+      "/privacidade",
+      "/registo",
+      "/arquivo"
+    ]
+  },
+  "source_artifacts": {
+    "rankings": {
+      "artifact_kind": "public_rankings",
+      "artifact_version": "public-brand-rankings-v1",
+      "latest_alias": "public_brand_rankings.latest.json",
+      "snapshot_filename": "public_brand_rankings.2026-04-23T22-09-57Z.json",
+      "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\public_brand_rankings_2026-04-23.json",
+      "summary": {
+        "included_rows": 552,
+        "publishable_rows": 1,
+        "limited_rows": 551,
+        "blocked_rows_hidden": 555,
+        "top_ranked_brand": "North Sails"
+      }
+    },
+    "newsletter": {
+      "artifact_kind": "newsletter_candidates",
+      "artifact_version": "newsletter-candidates-v1",
+      "latest_alias": "newsletter_candidate_brands.latest.json",
+      "snapshot_filename": "newsletter_candidate_brands.2026-04-23T22-09-57Z.json",
+      "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\newsletter_candidate_brands_2026-04-23.json",
+      "summary": {
+        "publishable_candidates": 1,
+        "limited_overrides_applied": 0,
+        "total_candidates": 1,
+        "top_candidate_brand": "North Sails"
+      }
+    }
+  },
+  "publication_policy": {
+    "public_rankings": {
+      "allowed_statuses": [
+        "publishable",
+        "limited"
+      ],
+      "hidden_statuses": [
+        "blocked"
+      ],
+      "limited_rows_badged": true
+    },
+    "newsletter": {
+      "allowed_statuses": [
+        "publishable"
+      ],
+      "limited_override_required": true,
+      "send_mode": "manual_first"
+    },
+    "raw_evidence_public": false,
+    "person_level_data_public": false
+  },
+  "release_summary": {
+    "visible_ranked_rows": 552,
+    "publishable_rows": 1,
+    "limited_rows": 551,
+    "blocked_rows_hidden": 555,
+    "newsletter_default_candidates": 1,
+    "top_ranked_brand": "North Sails",
+    "top_newsletter_candidate": "North Sails"
+  },
+  "verification_baseline": {
+    "expected_live_base_url": "https://postitamos.github.io/talaria-brand-radar-public/",
+    "expected_query_entry_routes": [
+      "/?/ranking",
+      "/?/metodologia",
+      "/?/privacidade",
+      "/?/registo",
+      "/?/arquivo"
+    ],
+    "expected_data_routes": [
+      "/data/public_brand_rankings.latest.json",
+      "/data/newsletter_candidate_brands.latest.json",
+      "/data/site_release.latest.json"
+    ],
+    "blocked_rows_publicly_hidden": true,
+    "limited_rows_publicly_badged": true
+  }
+}
