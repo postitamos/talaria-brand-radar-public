@@ -145,11 +145,9 @@ Current boundary:
 - `vercel.json` remains available as a fallback static host config
 - `docs/DEPLOYMENT_RUNBOOK_PT_2026-04-24.md` documents the shared-project
   fallback and the static deployment flow
-- the preferred v1 host is now GitHub Pages, provided the repo is created and
-  Pages can publish the workflow artifact
-- private visibility is acceptable while staging, but the final GitHub Pages
-  launch may still require either a public repo or a GitHub plan that supports
-  Pages on private repositories
+- the preferred v1 host is now GitHub Pages on the GitHub Free path
+- current staging state may remain private temporarily, but the launch path now
+  assumes this repo will be made public before GitHub Pages is enabled
 
 ## Current Data Rules
 

@@ -159,12 +159,12 @@ Build base:
 
 Nota operacional:
 
-- manter o repo privado e aceitavel durante staging
-- antes do go-live em GitHub Pages, confirmar se o plano da conta suporta
-  Pages em repositorios privados
-- se nao suportar, o caminho v1 passa por:
-  - tornar o repo publico na altura do lancamento, ou
-  - usar o fallback de host estatico (`Vercel`)
+- a decisao desta tranche e manter o GitHub Free
+- por isso, o caminho de lancamento em GitHub Pages assume:
+  - repo `talaria-brand-radar-public` tornado publico no momento do go-live
+  - GitHub Pages configurado via GitHub Actions nesse repo publico
+- o repo pode continuar privado durante staging local, mas o passo imediatamente
+  anterior ao deploy publico e mudar a visibilidade do repo
 
 Fallback host:
 
