@@ -147,6 +147,9 @@ Current boundary:
   fallback and the static deployment flow
 - the preferred v1 host is now GitHub Pages, provided the repo is created and
   Pages can publish the workflow artifact
+- private visibility is acceptable while staging, but the final GitHub Pages
+  launch may still require either a public repo or a GitHub plan that supports
+  Pages on private repositories
 
 ## Current Data Rules
 

@@ -144,7 +144,7 @@ Hosting default recomendado:
 
 Setup esperado:
 
-- repo publico `talaria-brand-radar-public`
+- repo `talaria-brand-radar-public`
 - workflow `.github/workflows/deploy-pages.yml`
 - GitHub Pages configurado para usar GitHub Actions
 - secrets do repo:
@@ -156,6 +156,15 @@ Setup esperado:
 Build base:
 
 - `VITE_PUBLIC_BASE_PATH=/${repo_name}/`
+
+Nota operacional:
+
+- manter o repo privado e aceitavel durante staging
+- antes do go-live em GitHub Pages, confirmar se o plano da conta suporta
+  Pages em repositorios privados
+- se nao suportar, o caminho v1 passa por:
+  - tornar o repo publico na altura do lancamento, ou
+  - usar o fallback de host estatico (`Vercel`)
 
 Fallback host:
 
