@@ -38,6 +38,19 @@ O terceiro passa a ser o manifesto tecnico de release.
 
 ## Passo 1: Importar os artefactos aprovados
 
+Assume-se agora que o repo privado ja correu o comando de preparacao:
+
+```powershell
+python src/build_public_release_inputs.py --snapshot docs/checkpoint-evidence/remediation_snapshot.json --output-dir temp/public_scores
+```
+
+Os imports do repo publico passam por defeito a ler os aliases estaveis:
+
+- `..\talaria-brand-radar\temp\public_scores\public_brand_rankings.latest.json`
+- `..\talaria-brand-radar\temp\public_scores\newsletter_candidate_brands.latest.json`
+
+Depois disso:
+
 ```powershell
 npm run import:rankings
 npm run import:newsletter

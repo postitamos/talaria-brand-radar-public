@@ -3,8 +3,8 @@
   "artifact_version": "site-release-v1",
   "snapshot_captured_at": "2026-04-23T22:09:57Z",
   "score_version": "public-brand-score-v1",
-  "source_rankings_path": "..\\talaria-brand-radar\\temp\\public_scores\\public_brand_rankings_2026-04-23.json",
-  "source_newsletter_path": "..\\talaria-brand-radar\\temp\\public_scores\\newsletter_candidate_brands_2026-04-23.json",
+  "source_rankings_path": "..\\talaria-brand-radar\\temp\\public_scores\\public_brand_rankings.latest.json",
+  "source_newsletter_path": "..\\talaria-brand-radar\\temp\\public_scores\\newsletter_candidate_brands.latest.json",
   "latest_alias": "site_release.latest.json",
   "snapshot_filename": "site_release.2026-04-23T22-09-57Z.json"
 }

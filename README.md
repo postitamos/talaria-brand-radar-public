@@ -56,7 +56,7 @@ npm run import:rankings
 Optional explicit source:
 
 ```powershell
-node .\scripts\import-rankings-artifact.mjs --source ..\talaria-brand-radar\temp\public_scores\public_brand_rankings_2026-04-23.json
+node .\scripts\import-rankings-artifact.mjs --source ..\talaria-brand-radar\temp\public_scores\public_brand_rankings.latest.json
 ```
 
 The import step writes:
@@ -77,6 +77,12 @@ The same repo also supports the manual editorial candidate import:
 npm run import:newsletter
 npm run verify:newsletter
 ```
+
+By default, both import scripts now read the stable latest aliases from the
+private repo:
+
+- `..\talaria-brand-radar\temp\public_scores\public_brand_rankings.latest.json`
+- `..\talaria-brand-radar\temp\public_scores\newsletter_candidate_brands.latest.json`
 
 To formalize the system-side release state:
 

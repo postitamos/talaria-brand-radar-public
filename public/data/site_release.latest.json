@@ -1,7 +1,7 @@
 {
   "artifact_kind": "site_release",
   "artifact_version": "site-release-v1",
-  "generated_at": "2026-04-24T20:59:33.044Z",
+  "generated_at": "2026-04-24T22:32:09.762Z",
   "snapshot_captured_at": "2026-04-23T22:09:57Z",
   "score_version": "public-brand-score-v1",
   "site_contract": {
@@ -24,7 +24,7 @@
       "artifact_version": "public-brand-rankings-v1",
       "latest_alias": "public_brand_rankings.latest.json",
       "snapshot_filename": "public_brand_rankings.2026-04-23T22-09-57Z.json",
-      "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\public_brand_rankings_2026-04-23.json",
+      "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\public_brand_rankings.latest.json",
       "summary": {
         "included_rows": 552,
         "publishable_rows": 1,
@@ -38,7 +38,7 @@
       "artifact_version": "newsletter-candidates-v1",
       "latest_alias": "newsletter_candidate_brands.latest.json",
       "snapshot_filename": "newsletter_candidate_brands.2026-04-23T22-09-57Z.json",
-      "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\newsletter_candidate_brands_2026-04-23.json",
+      "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\newsletter_candidate_brands.latest.json",
       "summary": {
         "publishable_candidates": 1,
         "limited_overrides_applied": 0,

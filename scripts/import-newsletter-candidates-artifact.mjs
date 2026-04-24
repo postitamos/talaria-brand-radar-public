@@ -9,7 +9,7 @@ const defaultSource = path.resolve(
   'talaria-brand-radar',
   'temp',
   'public_scores',
-  'newsletter_candidate_brands_2026-04-23.json',
+  'newsletter_candidate_brands.latest.json',
 );
 const entryPath = fileURLToPath(import.meta.url);
 
