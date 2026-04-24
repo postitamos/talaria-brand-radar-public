@@ -73,7 +73,11 @@ export type NewsletterCandidateArtifact = {
   language_default: string;
   selection_policy: {
     default_included_statuses: PublicationStatus[];
-    limited_override_allowed: boolean;
+    limited_override_brand_ids: number[];
+    limited_override_brand_names: string[];
+    limited_override_source: string | null;
+    requires_editorial_review_for_limited: boolean;
+    send_mode: string;
   };
   summary: {
     publishable_candidates: number;

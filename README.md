@@ -26,6 +26,8 @@ live Brand Radar truth tables at runtime.
 - `npm run build` - production build
 - `npm run test:run` - test suite
 - `npm run verify:artifact` - validate the imported public rankings artifact boundary
+- `npm run import:newsletter` - import the newsletter candidate artifact into `public/data/`
+- `npm run verify:newsletter` - validate the imported newsletter candidate artifact boundary
 - `npm run verify` - tests plus build
 - `npm run import:rankings` - import the approved public rankings artifact into `public/data/`
 
@@ -59,6 +61,13 @@ Before a real publish, validate the imported runtime artifact:
 npm run verify:artifact
 ```
 
+The same repo also supports the manual editorial candidate import:
+
+```powershell
+npm run import:newsletter
+npm run verify:newsletter
+```
+
 ## Signup Environment
 
 Copy `.env.example` to `.env.local` and set:
@@ -87,6 +96,18 @@ The intended deployment model is:
 The function is public-facing and returns a generic success response for repeat
 signups after dedupe by normalized email. `supabase/config.toml` fixes
 `verify_jwt = false` for this public function.
+
+## Newsletter Editorial Baseline
+
+The public site does not send the newsletter yet, but this repo now imports the
+current newsletter candidate artifact as a sibling editorial input.
+
+Current boundary:
+
+- rankings page consumes only `public_brand_rankings.latest.json`
+- archive/editorial readiness can consume `newsletter_candidate_brands.latest.json`
+- newsletter candidates remain `publishable` by default unless an explicit
+  upstream `limited` override is present in the imported artifact
 
 ## Current Public Routes
 

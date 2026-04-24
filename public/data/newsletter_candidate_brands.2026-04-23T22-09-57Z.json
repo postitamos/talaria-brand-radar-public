@@ -1,0 +1,242 @@
+{
+  "artifact_kind": "newsletter_candidates",
+  "artifact_version": "newsletter-candidates-v1",
+  "generated_at": "2026-04-23T22:16:02Z",
+  "snapshot_captured_at": "2026-04-23T22:09:57Z",
+  "snapshot_source": "supabase-service-role-rest-export",
+  "score_version": "public-brand-score-v1",
+  "language_default": "pt-PT",
+  "selection_policy": {
+    "default_included_statuses": [
+      "publishable"
+    ],
+    "limited_override_brand_ids": [],
+    "limited_override_brand_names": [],
+    "limited_override_source": null,
+    "requires_editorial_review_for_limited": true,
+    "send_mode": "manual_first"
+  },
+  "summary": {
+    "publishable_candidates": 1,
+    "limited_overrides_applied": 0,
+    "total_candidates": 1,
+    "top_candidate_brand": "North Sails"
+  },
+  "candidate_brands": [
+    {
+      "public_rank": 1,
+      "brand_id": 1220,
+      "brand": "North Sails",
+      "country": "Italy",
+      "city": "Milan",
+      "instagram_handle": "northsails",
+      "tiktok_handle": "northsails",
+      "portugal_relationship_class": "unknown",
+      "brand_score": 71,
+      "confidence_score": 97,
+      "publication_status": "publishable",
+      "score_version": "public-brand-score-v1",
+      "snapshot_captured_at": "2026-04-23T22:09:57Z",
+      "last_research_date": "2026-05-11",
+      "last_verified_at": "2026-04-22T13:16:40.871667+00:00",
+      "score_breakdown": {
+        "portugal_relationship_fit": {
+          "points": 0,
+          "max": 20,
+          "value": "unknown",
+          "label": "Portugal relationship class is unknown."
+        },
+        "knitwear_capability": {
+          "points": 15,
+          "max": 15,
+          "value": "yes",
+          "label": "knitwear_capability scored from value yes."
+        },
+        "knitwear_depth": {
+          "points": 11,
+          "max": 15,
+          "value": "medium",
+          "label": "knitwear_depth scored from value medium."
+        },
+        "price_segment": {
+          "points": 5,
+          "max": 10,
+          "value": "contemporary",
+          "label": "price_segment scored from value contemporary."
+        },
+        "revenue_scale": {
+          "points": 10,
+          "max": 10,
+          "value": "50M+",
+          "label": "revenue_scale scored from value 50M+."
+        },
+        "production_geography_fit": {
+          "points": 12,
+          "max": 12,
+          "value": "Europe, including Italy",
+          "label": "Production geography is confirmed in preferred Europe/nearshore regions only.",
+          "details": {
+            "classification": "preferred_only",
+            "matched_preferred_terms": [
+              "europe",
+              "italy"
+            ],
+            "matched_non_preferred_terms": []
+          }
+        },
+        "business_model_fit": {
+          "points": 8,
+          "max": 8,
+          "value": "hybrid",
+          "label": "business_model_fit scored from value hybrid."
+        },
+        "sustainability_signal": {
+          "points": 5,
+          "max": 5,
+          "value": "yes",
+          "label": "sustainability_signal scored from value yes."
+        },
+        "brand_maturity_signal": {
+          "points": 5,
+          "max": 5,
+          "value": 1957,
+          "label": "Brand is mature (15+ years)."
+        }
+      },
+      "confidence_breakdown": {
+        "critical_truth_alignment": {
+          "points": 25,
+          "max": 25,
+          "value": "aligned",
+          "label": "Current projection aligns with the latest archive row on critical truth fields.",
+          "details": {
+            "alignment_failures": []
+          }
+        },
+        "source_completeness": {
+          "points": 27,
+          "max": 30,
+          "value": "latest_archive",
+          "label": "Source completeness measures whether the latest archive row backs the scored claims with durable proof.",
+          "details": {
+            "portugal_connection_source": {
+              "points": 3,
+              "max": 3,
+              "present": true
+            },
+            "portugal_commercial_presence_source": {
+              "points": 0,
+              "max": 3,
+              "present": false
+            },
+            "knitwear_source": {
+              "points": 4,
+              "max": 4,
+              "present": true
+            },
+            "knitwear_evidence": {
+              "points": 4,
+              "max": 4,
+              "present": true
+            },
+            "price_segment_source": {
+              "points": 2,
+              "max": 2,
+              "present": true
+            },
+            "price_segment_evidence": {
+              "points": 2,
+              "max": 2,
+              "present": true
+            },
+            "revenue_source": {
+              "points": 4,
+              "max": 4,
+              "present": true
+            },
+            "production_source": {
+              "points": 4,
+              "max": 4,
+              "present": true
+            },
+            "business_model_source": {
+              "points": 2,
+              "max": 2,
+              "present": true
+            },
+            "sustainability_source": {
+              "points": 1,
+              "max": 1,
+              "present": true
+            },
+            "year_founded_source": {
+              "points": 1,
+              "max": 1,
+              "present": true
+            }
+          }
+        },
+        "freshness": {
+          "points": 20,
+          "max": 20,
+          "value": "0-90",
+          "label": "Research is within 90 days of the snapshot."
+        },
+        "geography_completeness": {
+          "points": 10,
+          "max": 10,
+          "value": {
+            "country": "Italy",
+            "city": "Milan"
+          },
+          "label": "Country and city completeness contribute to public filter reliability.",
+          "details": {
+            "country_points": 5,
+            "city_points": 5
+          }
+        },
+        "social_completeness": {
+          "points": 10,
+          "max": 10,
+          "value": {
+            "instagram_handle": "verified",
+            "tiktok_handle": "verified"
+          },
+          "label": "Social completeness is provisional until archive-backed social proof is refreshed consistently.",
+          "details": {
+            "instagram_handle": {
+              "points": 6,
+              "max": 6,
+              "status": "verified"
+            },
+            "tiktok_handle": {
+              "points": 4,
+              "max": 4,
+              "status": "verified"
+            }
+          }
+        },
+        "verification_recency": {
+          "points": 5,
+          "max": 5,
+          "value": "0-180",
+          "label": "Verification is within 180 days of the snapshot."
+        }
+      },
+      "profile_completeness": {
+        "instagram_handle": "verified",
+        "tiktok_handle": "verified"
+      },
+      "blockers": [],
+      "limitations": [],
+      "evidence": {
+        "score_evidence_mode": "latest_archive",
+        "archive_id": 2123,
+        "archive_research_version": 4,
+        "brands_research_version": 4,
+        "critical_alignment_passed": true,
+        "critical_alignment_failures": []
+      }
+    }
+  ]
+}

@@ -7,12 +7,14 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "import:rankings": "node ./scripts/import-rankings-artifact.mjs",
+    "import:newsletter": "node ./scripts/import-newsletter-candidates-artifact.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
     "verify:artifact": "node ./scripts/verify-public-rankings-artifact.mjs",
-    "verify": "npm run test:run && npm run verify:artifact && npm run build"
+    "verify:newsletter": "node ./scripts/verify-newsletter-candidates-artifact.mjs",
+    "verify": "npm run test:run && npm run verify:artifact && npm run verify:newsletter && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",
