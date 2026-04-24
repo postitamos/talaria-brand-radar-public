@@ -18,7 +18,9 @@ live Brand Radar truth tables at runtime.
 - this repo consumes only imported scored artifacts
 - the public website can show `publishable` and `limited`
 - `blocked` rows never appear on the public site
-- newsletter signup uses a separate Supabase project
+- newsletter signup uses an isolated Supabase boundary and, in the current v1
+  launch path, reuses the Brand Radar project through the shared-project
+  fallback
 
 ## Main Scripts
 
@@ -76,10 +78,12 @@ Copy `.env.example` to `.env.local` and set:
 - `VITE_PUBLIC_SIGNUP_SUPABASE_ANON_KEY`
 - optional `VITE_PUBLIC_SIGNUP_FUNCTION_NAME`
 
-The public site uses only the separate signup project URL + anon key. It does
-not use Brand Radar research credentials.
+The public site uses only the signup project URL + anon/publishable key for the
+public Edge Function. It does not read Brand Radar research tables at runtime.
+The current local launch path is wired against the shared Brand Radar project
+fallback.
 
-## Separate Supabase Signup Surface
+## Supabase Signup Surface
 
 This repo includes:
 
@@ -89,13 +93,22 @@ This repo includes:
 
 The intended deployment model is:
 
-- separate Supabase project for public signup
+- preferred: separate Supabase project for public signup
+- accepted v1 fallback: isolated signup table + Edge Function inside the Brand
+  Radar Supabase project
 - one `newsletter_signups` table
 - one `newsletter-signup` Edge Function
 
 The function is public-facing and returns a generic success response for repeat
 signups after dedupe by normalized email. `supabase/config.toml` fixes
 `verify_jwt = false` for this public function.
+
+Validated v1 state on 2026-04-24:
+
+- `public.newsletter_signups` exists on project `qukapngihsutopsycwec`
+- `newsletter-signup` is deployed live on that same project
+- valid signup, duplicate signup, and invalid-payload rejection were all
+  smoke-tested successfully from this repo
 
 ## Newsletter Editorial Baseline
 
@@ -120,8 +133,10 @@ Current boundary:
 ## Deployment Readiness
 
 - `vercel.json` is included for SPA rewrites and basic public headers
-- `docs/DEPLOYMENT_RUNBOOK_PT_2026-04-24.md` documents the separate Supabase
-  signup project setup and the static deployment flow
+- `docs/DEPLOYMENT_RUNBOOK_PT_2026-04-24.md` documents the shared-project
+  fallback and the static deployment flow
+- the only remaining launch blocker is static hosting access for the real public
+  deploy and smoke test
 
 ## Current Data Rules
 

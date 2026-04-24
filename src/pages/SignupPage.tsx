@@ -35,7 +35,7 @@ export function SignupPage() {
     setStatusMessage(null);
 
     if (!config) {
-      setStatusMessage('O registo publico ainda nao esta ligado ao projeto Supabase separado.');
+      setStatusMessage('O registo publico ainda nao esta ligado ao limite Supabase de signup.');
       return;
     }
 
@@ -87,7 +87,7 @@ export function SignupPage() {
         <form className="signup-form" onSubmit={handleSubmit}>
           {!signupReady ? (
             <p className="inline-note">
-              O registo publico ainda nao esta ligado ao projeto Supabase separado. O ranking
+              O registo publico ainda nao esta ligado ao limite Supabase de signup. O ranking
               continua totalmente publico enquanto fechamos essa ligacao.
             </p>
           ) : null}
@@ -161,7 +161,7 @@ export function SignupPage() {
           <ul className="issue-list">
             <li>Sem gating do ranking por email.</li>
             <li>Sem automacao de envio nesta fase.</li>
-            <li>Projeto Supabase separado do Brand Radar research.</li>
+            <li>Signup isolado por funcao publica e sem leitura runtime das tabelas de research.</li>
             <li>Override editorial de linhas limited fica fora do form e fora do site.</li>
           </ul>
         </aside>

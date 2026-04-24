@@ -22,7 +22,7 @@ describe('signup helpers', () => {
     expect(result.normalizedPayload.name).toBe('Sofia');
   });
 
-  it('builds the edge function url from the separate Supabase project url', () => {
+  it('builds the edge function url from the configured Supabase project url', () => {
     expect(
       createNewsletterFunctionUrl({
         projectUrl: 'https://demo.supabase.co/',

@@ -8,7 +8,7 @@ Colocar `talaria-brand-radar-public` online como site estatico em Portugues,
 usando:
 
 - artefacto publico importado para `public/data/`
-- projeto Supabase separado para registos da newsletter
+- um limite Supabase isolado para registos da newsletter
 - funcao Edge publica `newsletter-signup`
 
 Este repo nao pode ler tabelas de research do Brand Radar em runtime.
@@ -25,15 +25,36 @@ Ja existe neste repo:
 - `supabase/config.toml` com `verify_jwt = false` para a funcao publica
 - `vercel.json` com rewrites SPA e headers basicos
 
-## Passo 1: Criar o projeto Supabase separado
+Estado validado em 2026-04-24:
 
-Criar um projeto novo apenas para captacao publica da newsletter.
+- o fallback v1 com o projeto Brand Radar foi aceite e usado
+- `public.newsletter_signups` ja existe em `qukapngihsutopsycwec`
+- a funcao publica `newsletter-signup` ja esta deployada nesse projeto
+- o smoke test local passou com:
+  - submissao valida -> `200`
+  - submissao repetida -> `200`
+  - payload invalido -> `400`
+- a dedupe por `email_normalized` foi confirmada com 1 linha persistida
 
-Nao reutilizar o projeto de research do Brand Radar.
+## Passo 1: Escolher o limite Supabase de signup
+Modelo preferido:
+
+- projeto Supabase separado apenas para captacao publica da newsletter
+
+Fallback v1 aceite:
+
+- reutilizar o projeto Supabase do Brand Radar
+- manter o site apenas sobre artefactos importados
+- expor publicamente apenas a funcao Edge `newsletter-signup`
+- nao ligar o frontend a tabelas de research em runtime
+
+Escolha atual desta tranche:
+
+- usar o fallback v1 no proprio projeto Brand Radar `qukapngihsutopsycwec`
 
 ## Passo 2: Aplicar a migration
 
-No projeto separado, aplicar:
+No projeto escolhido, aplicar:
 
 - `supabase/migrations/20260423234500_create_newsletter_signups.sql`
 
@@ -63,14 +84,15 @@ Contrato esperado:
 - guarda `source`, `source_page` e `locale`
 - responde `ok: true` tambem nos duplicados
 
-## Passo 4: Recolher credenciais publicas do projeto separado
-
-Recolher do projeto separado:
+## Passo 4: Recolher credenciais publicas do projeto escolhido
+Recolher do projeto escolhido:
 
 - `project URL`
 - `anon` ou `publishable key` para o cliente
 
-Este repo nao precisa de nenhuma credencial do projeto de research.
+Se o fallback v1 usar o proprio projeto Brand Radar, o frontend continua a usar
+apenas a URL publica do projeto e a anon/publishable key para chamar a funcao
+`newsletter-signup`. O site nao pode ler tabelas de research em runtime.
 
 ## Passo 5: Configurar envs do frontend
 
@@ -121,7 +143,11 @@ Configurar no host:
 - root do repo `talaria-brand-radar-public`
 - build command: `npm run build`
 - output directory: `dist`
-- variaveis de ambiente publicas do projeto separado
+- variaveis de ambiente publicas do projeto escolhido
+
+Bloqueio restante:
+
+- falta apenas acesso/credenciais ao host estatico para completar o deploy real
 
 ## Passo 9: Smoke test apos deploy
 
@@ -148,6 +174,6 @@ Confirmar em producao:
 
 - envio publico da newsletter
 - automacao de campanhas
-- ligacao direta do site ao projeto de research
+- ligacao direta do site a tabelas de research
 - paginas individuais por marca
 - gating do ranking por email
