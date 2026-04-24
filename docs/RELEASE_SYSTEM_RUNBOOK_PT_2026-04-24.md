@@ -80,7 +80,25 @@ Este passo cobre:
 - testes
 - limites dos artefactos
 - manifesto de release
+- historico append-only de releases
 - build do site
+
+## Passo 4B: Comando semanal unico de preparacao
+
+```powershell
+npm run release:prepare
+```
+
+Este comando corre, por ordem fixa:
+
+- import de rankings
+- verificacao de rankings
+- import do artefacto de newsletter
+- verificacao do artefacto de newsletter
+- build do manifesto `site_release.latest.json`
+- verificacao do manifesto
+- build de producao
+- resumo final do release
 
 ## Passo 5: Deploy
 
@@ -112,6 +130,30 @@ npm run smoke:live -- --check-signup --signup-email smoke+manual@example.invalid
 Esse passo usa a funcao publica `newsletter-signup`. Deve ser usado apenas
 quando for necessario provar a boundary publica live.
 
+## Passo 7: Registar a release so depois do smoke live
+
+Uma release conta apenas depois do smoke live passar em producao.
+
+So depois desse passo:
+
+```powershell
+npm run release:record
+npm run verify:history
+```
+
+O ficheiro tracked e:
+
+- `public/data/site_release_history.json`
+
+Este ledger e append-only e guarda:
+
+- timestamp de deploy
+- snapshot de origem
+- score version
+- SHA do repo publico
+- contagens publicas visiveis
+- contagem default de candidatos da newsletter
+
 ## Resultado esperado desta tranche
 
 No fim desta tranche, o produto publico fica com um sistema tecnico claro:
@@ -120,5 +162,6 @@ No fim desta tranche, o produto publico fica com um sistema tecnico claro:
 - manifesto de release verificavel
 - deploy estatico
 - smoke test live repetivel
+- historico append-only de releases bem sucedidas
 
 Ou seja: sistemas primeiro, conteudo depois.

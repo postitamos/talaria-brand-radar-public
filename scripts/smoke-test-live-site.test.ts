@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildExpectedUrls, normalizeBaseUrl, parseArgs } from './smoke-test-live-site.mjs';
+import { buildExpectedUrls, normalizeBaseUrl, parseArgs, wait } from './smoke-test-live-site.mjs';
 
 describe('smoke test live site script', () => {
   it('normalizes a base url with a trailing slash', () => {
@@ -21,6 +21,8 @@ describe('smoke test live site script', () => {
       expect(args.baseUrl).toContain('github.io/talaria-brand-radar-public');
       expect(args.checkSignup).toBe(false);
       expect(args.signupFunctionName).toBe('newsletter-signup');
+      expect(args.retries).toBe(1);
+      expect(args.retryDelayMs).toBe(0);
     } finally {
       if (previousValue === undefined) {
         delete process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME;
@@ -28,5 +30,15 @@ describe('smoke test live site script', () => {
         process.env.VITE_PUBLIC_SIGNUP_FUNCTION_NAME = previousValue;
       }
     }
+  });
+
+  it('accepts retry configuration from cli args', () => {
+    const args = parseArgs(['--retries', '6', '--retry-delay-ms', '5000']);
+    expect(args.retries).toBe(6);
+    expect(args.retryDelayMs).toBe(5000);
+  });
+
+  it('resolves immediately when the retry delay is zero', async () => {
+    await expect(wait(0)).resolves.toBeUndefined();
   });
 });

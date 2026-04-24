@@ -7,6 +7,8 @@ export function parseArgs(argv) {
   const baseUrlIndex = argv.indexOf('--base-url');
   const signupUrlIndex = argv.indexOf('--signup-url');
   const signupEmailIndex = argv.indexOf('--signup-email');
+  const retriesIndex = argv.indexOf('--retries');
+  const retryDelayIndex = argv.indexOf('--retry-delay-ms');
 
   return {
     baseUrl:
@@ -22,6 +24,8 @@ export function parseArgs(argv) {
       signupEmailIndex >= 0
         ? argv[signupEmailIndex + 1]
         : `smoke+${Date.now()}@example.invalid`,
+    retries: retriesIndex >= 0 ? Number.parseInt(argv[retriesIndex + 1], 10) : 1,
+    retryDelayMs: retryDelayIndex >= 0 ? Number.parseInt(argv[retryDelayIndex + 1], 10) : 0,
   };
 }
 
@@ -48,18 +52,39 @@ export function buildExpectedUrls(baseUrl) {
   };
 }
 
-async function fetchOk(url, expectedContentType = null) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Fetch failed for ${url} (${response.status}).`);
+export async function wait(delayMs) {
+  if (delayMs <= 0) {
+    return;
   }
 
-  const contentType = response.headers.get('content-type') || '';
-  if (expectedContentType && !contentType.includes(expectedContentType)) {
-    throw new Error(`Unexpected content type for ${url}: ${contentType}`);
+  await new Promise((resolve) => setTimeout(resolve, delayMs));
+}
+
+async function fetchOk(url, expectedContentType = null, { retries = 1, retryDelayMs = 0 } = {}) {
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= retries; attempt += 1) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Fetch failed for ${url} (${response.status}).`);
+      }
+
+      const contentType = response.headers.get('content-type') || '';
+      if (expectedContentType && !contentType.includes(expectedContentType)) {
+        throw new Error(`Unexpected content type for ${url}: ${contentType}`);
+      }
+
+      return response;
+    } catch (error) {
+      lastError = error;
+      if (attempt < retries) {
+        await wait(retryDelayMs);
+      }
+    }
   }
 
-  return response;
+  throw lastError instanceof Error ? lastError : new Error(String(lastError));
 }
 
 export async function runSmokeTest({
@@ -68,15 +93,17 @@ export async function runSmokeTest({
   signupUrl,
   signupFunctionName = 'newsletter-signup',
   signupEmail,
+  retries = 1,
+  retryDelayMs = 0,
 }) {
   const urls = buildExpectedUrls(baseUrl);
 
   for (const url of urls.routes) {
-    await fetchOk(url, 'text/html');
+    await fetchOk(url, 'text/html', { retries, retryDelayMs });
   }
 
   const [rankingsResponse, newsletterResponse, releaseResponse] = await Promise.all(
-    urls.data.map((url) => fetchOk(url, 'application/json')),
+    urls.data.map((url) => fetchOk(url, 'application/json', { retries, retryDelayMs })),
   );
 
   const [rankingsArtifact, newsletterArtifact, releaseArtifact] = await Promise.all([
@@ -95,6 +122,18 @@ export async function runSmokeTest({
 
   if (releaseArtifact.artifact_kind !== 'site_release') {
     throw new Error('Live release manifest has the wrong artifact_kind.');
+  }
+
+  if (!Array.isArray(rankingsArtifact.ranked_brands)) {
+    throw new Error('Live rankings artifact is missing ranked_brands.');
+  }
+
+  if (rankingsArtifact.ranked_brands.some((row) => row.publication_status === 'blocked')) {
+    throw new Error('Live rankings artifact still exposes blocked rows.');
+  }
+
+  if (!releaseArtifact.verification_baseline?.blocked_rows_publicly_hidden) {
+    throw new Error('Live release manifest no longer asserts blocked rows are hidden.');
   }
 
   if (checkSignup) {

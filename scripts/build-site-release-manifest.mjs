@@ -217,8 +217,10 @@ export async function buildAndWriteReleaseManifest({
   return {
     ok: true,
     snapshot_captured_at: manifest.snapshot_captured_at,
+    score_version: manifest.score_version,
     snapshot_filename: snapshotFilename,
     latest_alias: latestFilename,
+    visible_ranked_rows: manifest.release_summary.visible_ranked_rows,
     publishable_rows: manifest.release_summary.publishable_rows,
     limited_rows: manifest.release_summary.limited_rows,
     newsletter_default_candidates: manifest.release_summary.newsletter_default_candidates,

@@ -32,7 +32,11 @@ live Brand Radar truth tables at runtime.
 - `npm run import:newsletter` - import the newsletter candidate artifact into `public/data/`
 - `npm run verify:newsletter` - validate the imported newsletter candidate artifact boundary
 - `npm run build:release` - build the technical site release manifest into `public/data/`
+- `npm run release:prepare` - run the weekly local publish-prep loop
+- `npm run release:summary` - print the current operator release summary
+- `npm run release:record` - append a successful deployed release to the history ledger
 - `npm run verify:release` - validate the site release manifest against imported artifacts
+- `npm run verify:history` - validate the append-only release history ledger
 - `npm run smoke:live` - check the live public site routes and published JSON artifacts
 - `npm run verify` - tests plus build
 - `npm run import:rankings` - import the approved public rankings artifact into `public/data/`
@@ -79,6 +83,20 @@ To formalize the system-side release state:
 ```powershell
 npm run build:release
 npm run verify:release
+```
+
+To run the full weekly local publish-prep loop:
+
+```powershell
+npm run release:prepare
+```
+
+After a deployed release passes the live smoke test, record it in the append-only
+history ledger:
+
+```powershell
+npm run release:record
+npm run verify:history
 ```
 
 ## Signup Environment
@@ -161,6 +179,8 @@ tranche by default.
   fallback and the static deployment flow
 - `docs/RELEASE_SYSTEM_RUNBOOK_PT_2026-04-24.md` documents the manual
   import -> manifest -> verify -> deploy -> smoke-test loop
+- `public/data/site_release_history.json` records only successful deployed
+  releases after production smoke passes
 - the preferred v1 host is now GitHub Pages on the GitHub Free path
 - current staging state may remain private temporarily, but the launch path now
   assumes this repo will be made public before GitHub Pages is enabled
