@@ -25,6 +25,7 @@ live Brand Radar truth tables at runtime.
 - `npm run dev` - local development
 - `npm run build` - production build
 - `npm run test:run` - test suite
+- `npm run verify:artifact` - validate the imported public rankings artifact boundary
 - `npm run verify` - tests plus build
 - `npm run import:rankings` - import the approved public rankings artifact into `public/data/`
 
@@ -52,6 +53,12 @@ The import step writes:
 - `public_brand_rankings.latest.json`
 - `public_brand_rankings.metadata.json`
 
+Before a real publish, validate the imported runtime artifact:
+
+```powershell
+npm run verify:artifact
+```
+
 ## Signup Environment
 
 Copy `.env.example` to `.env.local` and set:
@@ -69,6 +76,7 @@ This repo includes:
 
 - `supabase/migrations/20260423234500_create_newsletter_signups.sql`
 - `supabase/functions/newsletter-signup/index.ts`
+- `supabase/config.toml`
 
 The intended deployment model is:
 
@@ -77,7 +85,8 @@ The intended deployment model is:
 - one `newsletter-signup` Edge Function
 
 The function is public-facing and returns a generic success response for repeat
-signups after dedupe by normalized email.
+signups after dedupe by normalized email. `supabase/config.toml` fixes
+`verify_jwt = false` for this public function.
 
 ## Current Public Routes
 
@@ -86,6 +95,12 @@ signups after dedupe by normalized email.
 - `/metodologia` - methodology
 - `/registo` - newsletter signup
 - `/arquivo` - newsletter archive placeholder
+
+## Deployment Readiness
+
+- `vercel.json` is included for SPA rewrites and basic public headers
+- `docs/DEPLOYMENT_RUNBOOK_PT_2026-04-24.md` documents the separate Supabase
+  signup project setup and the static deployment flow
 
 ## Current Data Rules
 

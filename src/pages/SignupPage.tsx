@@ -26,6 +26,7 @@ export function SignupPage() {
       }),
     [],
   );
+  const signupReady = Boolean(config);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -84,6 +85,13 @@ export function SignupPage() {
 
       <section className="signup-layout">
         <form className="signup-form" onSubmit={handleSubmit}>
+          {!signupReady ? (
+            <p className="inline-note">
+              O registo publico ainda nao esta ligado ao projeto Supabase separado. O ranking
+              continua totalmente publico enquanto fechamos essa ligacao.
+            </p>
+          ) : null}
+
           <label>
             <span>Email</span>
             <input
@@ -142,7 +150,7 @@ export function SignupPage() {
             <small className="field-error">{errors.marketingConsent}</small>
           ) : null}
 
-          <button className="button button--primary" disabled={submitting} type="submit">
+          <button className="button button--primary" disabled={!signupReady || submitting} type="submit">
             {submitting ? 'A registar...' : 'Entrar na lista'}
           </button>
           {statusMessage ? <p className="inline-note">{statusMessage}</p> : null}
