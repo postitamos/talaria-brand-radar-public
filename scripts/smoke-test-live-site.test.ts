@@ -19,6 +19,7 @@ describe('smoke test live site script', () => {
     try {
       const args = parseArgs([]);
       expect(args.baseUrl).toContain('github.io/talaria-brand-radar-public');
+      expect(args.expectedSnapshot).toBeNull();
       expect(args.checkSignup).toBe(false);
       expect(args.signupFunctionName).toBe('newsletter-signup');
       expect(args.retries).toBe(1);
@@ -36,6 +37,11 @@ describe('smoke test live site script', () => {
     const args = parseArgs(['--retries', '6', '--retry-delay-ms', '5000']);
     expect(args.retries).toBe(6);
     expect(args.retryDelayMs).toBe(5000);
+  });
+
+  it('accepts an expected snapshot argument', () => {
+    const args = parseArgs(['--expected-snapshot', '2026-04-25T19:06:10Z']);
+    expect(args.expectedSnapshot).toBe('2026-04-25T19:06:10Z');
   });
 
   it('resolves immediately when the retry delay is zero', async () => {

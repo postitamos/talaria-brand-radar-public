@@ -5,6 +5,7 @@ const entryPath = fileURLToPath(import.meta.url);
 
 export function parseArgs(argv) {
   const baseUrlIndex = argv.indexOf('--base-url');
+  const expectedSnapshotIndex = argv.indexOf('--expected-snapshot');
   const signupUrlIndex = argv.indexOf('--signup-url');
   const signupEmailIndex = argv.indexOf('--signup-email');
   const retriesIndex = argv.indexOf('--retries');
@@ -15,6 +16,7 @@ export function parseArgs(argv) {
       baseUrlIndex >= 0
         ? argv[baseUrlIndex + 1]
         : 'https://postitamos.github.io/talaria-brand-radar-public/',
+    expectedSnapshot: expectedSnapshotIndex >= 0 ? argv[expectedSnapshotIndex + 1] : null,
     checkSignup: argv.includes('--check-signup'),
     signupUrl:
       signupUrlIndex >= 0 ? argv[signupUrlIndex + 1] : process.env.VITE_PUBLIC_SIGNUP_SUPABASE_URL,
@@ -89,6 +91,7 @@ async function fetchOk(url, expectedContentType = null, { retries = 1, retryDela
 
 export async function runSmokeTest({
   baseUrl,
+  expectedSnapshot = null,
   checkSignup = false,
   signupUrl,
   signupFunctionName = 'newsletter-signup',
@@ -122,6 +125,12 @@ export async function runSmokeTest({
 
   if (releaseArtifact.artifact_kind !== 'site_release') {
     throw new Error('Live release manifest has the wrong artifact_kind.');
+  }
+
+  if (expectedSnapshot && releaseArtifact.snapshot_captured_at !== expectedSnapshot) {
+    throw new Error(
+      `Live release snapshot mismatch. Expected ${expectedSnapshot} but found ${releaseArtifact.snapshot_captured_at}.`,
+    );
   }
 
   if (!Array.isArray(rankingsArtifact.ranked_brands)) {

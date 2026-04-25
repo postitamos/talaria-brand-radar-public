@@ -134,6 +134,16 @@ Por defeito o smoke test verifica:
 - `/?/arquivo`
 - os tres artefactos JSON publicados
 
+Para contar uma release nova com seguranca, o smoke deve ser corrido com o
+snapshot esperado do manifesto live:
+
+```powershell
+npm run smoke:live -- --expected-snapshot 2026-04-25T19:06:10Z
+```
+
+Se o site ainda estiver a servir o snapshot anterior, este comando falha e a
+release nao deve ser registada no ledger.
+
 Opcionalmente pode testar signup real:
 
 ```powershell
