@@ -1,7 +1,7 @@
 {
   "artifact_kind": "public_rankings",
   "artifact_version": "public-brand-rankings-v1",
-  "generated_at": "2026-04-24T22:31:43Z",
+  "generated_at": "2026-04-25T10:51:32Z",
   "snapshot_captured_at": "2026-04-23T22:09:57Z",
   "snapshot_source": "supabase-service-role-rest-export",
   "score_version": "public-brand-score-v1",
