@@ -1,7 +1,7 @@
 {
   "artifact_kind": "site_release_history",
   "artifact_version": "site-release-history-v1",
-  "generated_at": "2026-04-26T12:12:15.717Z",
+  "generated_at": "2026-04-26T13:08:28.244Z",
   "releases": [
     {
       "release_id": "2026-04-23T22:09:57Z::c48679d8585e0886ab778ac2154c6fe18c42ffae",
@@ -121,6 +121,18 @@
       "publishable_rows": 86,
       "limited_rows": 466,
       "newsletter_default_candidates": 86,
+      "public_base_url": "https://postitamos.github.io/talaria-brand-radar-public/"
+    },
+    {
+      "release_id": "2026-04-26T12:58:13Z::627d27686466a7966c999516d87166c724819541",
+      "deployed_at": "2026-04-26T13:08:28.244Z",
+      "public_repo_commit_sha": "627d27686466a7966c999516d87166c724819541",
+      "source_snapshot_captured_at": "2026-04-26T12:58:13Z",
+      "score_version": "public-brand-score-v1",
+      "visible_ranked_rows": 552,
+      "publishable_rows": 100,
+      "limited_rows": 452,
+      "newsletter_default_candidates": 100,
       "public_base_url": "https://postitamos.github.io/talaria-brand-radar-public/"
     }
   ]
