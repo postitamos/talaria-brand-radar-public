@@ -1,9 +1,9 @@
 {
   "artifact_kind": "newsletter_candidates",
   "artifact_version": "newsletter-candidates-v1",
-  "snapshot_captured_at": "2026-04-26T02:05:13Z",
+  "snapshot_captured_at": "2026-04-26T03:10:05Z",
   "score_version": "public-brand-score-v1",
   "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\newsletter_candidate_brands.latest.json",
   "latest_alias": "newsletter_candidate_brands.latest.json",
-  "snapshot_filename": "newsletter_candidate_brands.2026-04-26T02-05-13Z.json"
+  "snapshot_filename": "newsletter_candidate_brands.2026-04-26T03-10-05Z.json"
 }
