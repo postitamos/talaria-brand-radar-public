@@ -1,9 +1,9 @@
 {
   "artifact_kind": "public_rankings",
   "artifact_version": "public-brand-rankings-v1",
-  "snapshot_captured_at": "2026-04-29T09:27:05Z",
+  "snapshot_captured_at": "2026-04-29T11:14:10Z",
   "score_version": "public-brand-score-v1",
   "source_path": "..\\talaria-brand-radar\\temp\\public_scores\\public_brand_rankings.latest.json",
   "latest_alias": "public_brand_rankings.latest.json",
-  "snapshot_filename": "public_brand_rankings.2026-04-29T09-27-05Z.json"
+  "snapshot_filename": "public_brand_rankings.2026-04-29T11-14-10Z.json"
 }
