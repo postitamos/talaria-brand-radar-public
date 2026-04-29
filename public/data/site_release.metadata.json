@@ -1,10 +1,10 @@
 {
   "artifact_kind": "site_release",
   "artifact_version": "site-release-v1",
-  "snapshot_captured_at": "2026-04-29T14:32:24Z",
+  "snapshot_captured_at": "2026-04-29T14:59:01Z",
   "score_version": "public-brand-score-v1",
   "source_rankings_path": "..\\talaria-brand-radar\\temp\\public_scores\\public_brand_rankings.latest.json",
   "source_newsletter_path": "..\\talaria-brand-radar\\temp\\public_scores\\newsletter_candidate_brands.latest.json",
   "latest_alias": "site_release.latest.json",
-  "snapshot_filename": "site_release.2026-04-29T14-32-24Z.json"
+  "snapshot_filename": "site_release.2026-04-29T14-59-01Z.json"
 }
